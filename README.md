@@ -20,7 +20,7 @@ English are translated automatically, with the original kept alongside.
 
 *Screenshot from the app: one answer from a real results report, scored and rewritten.*
 
-<img src="docs/05_results_analysis.png" alt="Scored self-introduction: four rubric scores, a suggested improvement, and a stronger version with bracketed placeholders for facts only the candidate can supply" width="600">
+<img src="docs/05_results_analysis.png" alt="Scored self-introduction: four rubric scores, a suggested improvement, and a stronger version with bracketed placeholders for facts only the candidate can supply" width="700">
 
 Setup, commands and the file layout live in **[TECHNICAL.md](TECHNICAL.md)**.
 
@@ -32,11 +32,11 @@ Setup, commands and the file layout live in **[TECHNICAL.md](TECHNICAL.md)**.
 
 *Screenshot from the app: the posting read, translated and turned into a study plan.*
 
-<img src="docs/02_description_and_plan.png" alt="Study plan built from a German StepStone posting, translated, with 12 key skills, 6 likely topics and 3 plan items" width="600">
+<img src="docs/02_description_and_plan.png" alt="Study plan built from a German StepStone posting, translated, with 12 key skills, 6 likely topics and 3 plan items" width="700">
 
-*Screenshot from the app: choosing how the mock interview will run.*
+<!--*Screenshot from the app: choosing how the mock interview will run.*
 
-<img src="docs/03_interview_setup.png" alt="Interview setup: language, difficulty, interviewer attitude and a 5-question split of 1 introduction, 2 technical, 2 behavioural" width="600">
+<img src="docs/03_interview_setup.png" alt="Interview setup: language, difficulty, interviewer attitude and a 5-question split of 1 introduction, 2 technical, 2 behavioural" width="600">-->
 
 ## From Python to TypeScript
 
