@@ -12,7 +12,7 @@ English are translated automatically, with the original kept alongside.
 
 | | |
 |---|---|
-| **Try it** | **Live app on Vercel** _(link to be added)_ · run it locally with [TECHNICAL.md](TECHNICAL.md) |
+| **Try it** | **[Live app on Vercel](https://interview-practice-ai-app.vercel.app/)** · run it locally with [TECHNICAL.md](TECHNICAL.md) |
 | **What it does** | Turns a real job posting into a study plan, a mock interview and a scored report with a stronger version of every answer |
 | **Cost per session** | About 3 cents for a five-question interview on GPT-5 mini |
 | **Interview** | English or German · 3 to 20 questions · three difficulty levels · three interviewer styles |
