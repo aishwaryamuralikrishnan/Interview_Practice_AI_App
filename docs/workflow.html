@@ -1,0 +1,116 @@
+<style>
+  :root{--ink:#0b0b0b;--muted:#52514e;--faint:#898781;--surface:#fff;
+        --page:#f7f7f4;--rule:#e1e0d9;--blue:#2a78d6;--orange:#eb6834;
+        --aqua:#1baf7a;--good:#0ca30c;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--page);
+       font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);}
+  .sheet{width:1240px;padding:34px 38px 30px;}
+  h1{font-size:1.45rem;margin:0 0 4px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);margin:0 0 28px;font-size:.94rem;max-width:80ch;}
+
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;align-items:stretch;}
+  .step{background:var(--surface);border:1px solid var(--rule);border-radius:13px;
+        padding:14px 15px 15px;position:relative;display:flex;flex-direction:column;}
+  .n{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;
+     border-radius:50%;background:var(--blue);color:#fff;font-size:.76rem;font-weight:800;
+     margin-bottom:8px;}
+  .step h2{font-size:.92rem;margin:0 0 9px;line-height:1.25;}
+  .who{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;font-weight:800;
+       color:var(--faint);margin-bottom:2px;}
+  .step p{margin:0 0 9px;font-size:.81rem;line-height:1.45;color:var(--ink);}
+  .step p.app{color:var(--muted);}
+  .calls{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule);
+         font-size:.72rem;color:var(--muted);}
+  .calls b{color:var(--blue);}
+  .calls.none b{color:var(--faint);}
+
+  .between{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin:0 0 9px;}
+  .chev{display:flex;justify-content:flex-end;align-items:center;height:20px;
+        transform:translateX(6px);}
+
+  .loopwrap{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-top:9px;}
+  .loop{grid-column:4;border:1.5px dashed var(--orange);border-radius:10px;
+        padding:8px 11px;background:#eb68340d;font-size:.78rem;color:#a8431d;
+        line-height:1.4;text-align:center;}
+  .loop b{color:var(--orange);}
+
+  .note{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .note div{border-left:3px solid var(--rule);padding-left:12px;font-size:.85rem;
+            color:var(--muted);line-height:1.5;}
+  .note b{color:var(--ink);}
+</style>
+
+<div class="sheet">
+  <h1>How the app works, end to end</h1>
+  <p class="sub">Five stages. You choose the model and the interview's shape; the app reads the
+    posting, conducts the interview one question at a time, and scores every answer against a
+    fixed rubric at the end.</p>
+
+  <div class="flow">
+    <div class="step">
+      <span class="n">1</span>
+      <h2>Job link<br>&amp; model</h2>
+      <div class="who">You</div>
+      <p>Paste the posting's URL, or the text if the site blocks fetching. Pick the model and
+         how hard it should think.</p>
+      <div class="who">The app</div>
+      <p class="app">Downloads the page and strips it to readable text.</p>
+      <div class="calls none"><b>no model call yet</b></div>
+    </div>
+
+    <div class="step">
+      <span class="n">2</span>
+      <h2>Description<br>&amp; study plan</h2>
+      <div class="who">The app</div>
+      <p class="app">Turns the page into a structured posting — translating it if it is not in
+         English — then derives key skills, likely topics and three study strategies.</p>
+      <div class="calls"><b>2 calls</b> · extraction, plan</div>
+    </div>
+
+    <div class="step">
+      <span class="n">3</span>
+      <h2>Interview<br>setup</h2>
+      <div class="who">You</div>
+      <p>Choose language, difficulty, the interviewer's attitude, and how many questions
+         you want.</p>
+      <div class="who">The app</div>
+      <p class="app">Splits the total into one intro plus an even technical/behavioural share.</p>
+      <div class="calls none"><b>no model call</b></div>
+    </div>
+
+    <div class="step">
+      <span class="n">4</span>
+      <h2>Mock<br>interview</h2>
+      <div class="who">You</div>
+      <p>Answer one question at a time, the way you would out loud.</p>
+      <div class="who">The app</div>
+      <p class="app">Asks the next question only after you have answered, with the whole
+         conversation so far in view.</p>
+      <div class="calls"><b>1 call per question</b></div>
+    </div>
+
+    <div class="step">
+      <span class="n">5</span>
+      <h2>Report<br>&amp; PDF</h2>
+      <div class="who">The app</div>
+      <p class="app">Scores each answer against its rubric, writes a stronger version of it, and
+         draws the charts. Downloadable as PDF.</p>
+      <div class="calls"><b>1 call per answer</b> + <b>1&nbsp;summary</b></div>
+    </div>
+  </div>
+
+  <div class="loopwrap">
+    <div class="loop">↻ repeats until every question is answered —<br>
+      <b>the next question is never written in advance</b></div>
+  </div>
+
+  <div class="note">
+    <div><b>Why one question at a time.</b> Each new question is generated with the full
+      transcript in context, so a follow-up can build on what you actually said — which a
+      pre-written list of questions cannot do.</div>
+    <div><b>Why scoring waits until the end.</b> Feedback mid-interview would let you correct
+      course, which a real interview never allows. The rubric is applied once, to the answers
+      as given.</div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<style>
+  :root{--ink:#0b0b0b;--muted:#52514e;--faint:#898781;--surface:#fff;
+        --page:#f7f7f4;--rule:#e1e0d9;--blue:#2a78d6;--orange:#eb6834;
+        --aqua:#1baf7a;--danger:#d03b3b;--good:#0ca30c;--warn:#fab219;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--page);
+       font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);}
+  .sheet{width:1180px;padding:34px 38px 30px;}
+  h1{font-size:1.45rem;margin:0 0 4px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);margin:0 0 26px;font-size:.94rem;max-width:80ch;}
+
+  .panel{background:var(--surface);border:1px solid var(--rule);border-radius:13px;
+         padding:17px 19px 18px;margin-bottom:16px;}
+  .panel h2{font-size:1rem;margin:0 0 3px;display:flex;align-items:center;gap:9px;}
+  .pill{font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;font-weight:800;
+        padding:3px 8px;border-radius:999px;}
+  .panel .lead{margin:0 0 15px;font-size:.85rem;color:var(--muted);max-width:92ch;}
+
+  /* reasoning effort scale */
+  .scale{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:9px;}
+  .scale div{text-align:center;padding:9px 6px;font-size:.85rem;font-weight:700;
+     border:1px solid var(--rule);border-right:none;}
+  .scale div:first-child{border-radius:9px 0 0 9px;}
+  .scale div:last-child{border-radius:0 9px 9px 0;border-right:1px solid var(--rule);}
+  .ramp{height:9px;border-radius:5px;margin-bottom:8px;
+        background:linear-gradient(90deg,#cde2fb,#86b6ef,#3987e5,#184f95);}
+  .ends{display:flex;justify-content:space-between;font-size:.79rem;color:var(--muted);}
+
+  /* token budget bars */
+  .bars{display:grid;grid-template-columns:132px 1fr;gap:10px 14px;align-items:center;}
+  .bl{font-size:.8rem;color:var(--muted);text-align:right;line-height:1.3;}
+  .bar{display:flex;height:32px;border-radius:7px;overflow:hidden;
+       border:1px solid var(--rule);background:#fff;}
+  .seg{display:flex;align-items:center;justify-content:center;font-size:.72rem;
+       font-weight:700;color:#fff;white-space:nowrap;}
+  .think{background:#86b6ef;color:#123a63;}
+  .say{background:var(--good);}
+  .cut{background:repeating-linear-gradient(45deg,#d03b3b,#d03b3b 6px,#b93333 6px,#b93333 12px);}
+  .spare{background:#f2f2ee;color:var(--faint);}
+  .verdict{font-size:.79rem;line-height:1.35;}
+  .verdict b{display:block;}
+  .bad b{color:var(--danger);} .okv b{color:#087a08;} .neu b{color:var(--muted);}
+
+  .struck{border-color:#d03b3b40;background:#d03b3b08;}
+  .struck h2 span.name{text-decoration:line-through;text-decoration-thickness:2px;
+        text-decoration-color:#d03b3b99;color:var(--muted);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:11px;}
+  .grid2 p{margin:0;font-size:.85rem;line-height:1.5;}
+  .grid2 code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);
+       background:#0b0b0b0a;padding:1px 5px;border-radius:3px;}
+</style>
+
+<div class="sheet">
+  <h1>What you can actually tune</h1>
+  <p class="sub">Two dials, and one that does not exist on this model family. Both dials trade
+    quality against cost and speed — neither of them controls how varied the wording is.</p>
+
+  <div class="panel">
+    <h2><span class="pill" style="background:#2a78d61f;color:var(--blue)">Dial 1</span>
+        Reasoning effort</h2>
+    <p class="lead">How long the model thinks before it answers. The thinking is invisible — you
+      never see it — but you pay for it, and deeper thinking gives sharper questions and better
+      calibrated scores. This is the nearest thing to a temperature dial, and it changes
+      <b>depth, not randomness</b>.</p>
+    <div class="scale">
+      <div style="color:#5598e7">minimal</div>
+      <div style="color:#3987e5">low</div>
+      <div style="color:#2a78d6">medium</div>
+      <div style="color:#184f95">high</div>
+    </div>
+    <div class="ramp"></div>
+    <div class="ends"><span>Fast and cheap · shallower feedback</span>
+      <span>Slow and dearer · sharper analysis</span></div>
+  </div>
+
+  <div class="panel">
+    <h2><span class="pill" style="background:#0ca30c1f;color:#087a08">Dial 2</span>
+        Max tokens per response</h2>
+    <p class="lead">A <b>ceiling, not a budget you spend</b> — you are billed for what is
+      generated, so a generous cap costs nothing. The catch on a reasoning model: the cap covers
+      the invisible thinking as well as the visible answer.</p>
+    <div class="bars">
+      <div class="bl">Cap too low</div>
+      <div class="bar">
+        <div class="seg think" style="flex:0 0 46%">thinking (invisible)</div>
+        <div class="seg cut" style="flex:0 0 54%">cut off at the cap</div>
+      </div>
+      <div class="bl"></div>
+      <div class="verdict bad"><b>Rejected, not shown.</b>
+        An empty or half-written reply is discarded with a clear message.</div>
+
+      <div class="bl">Cap about right</div>
+      <div class="bar">
+        <div class="seg think" style="flex:0 0 40%">thinking (invisible)</div>
+        <div class="seg say" style="flex:0 0 32%">the answer you see</div>
+        <div class="seg spare" style="flex:0 0 28%">unused</div>
+      </div>
+      <div class="bl"></div>
+      <div class="verdict okv"><b>Complete.</b>
+        You are billed for the thinking and the answer — never for the unused headroom.</div>
+
+      <div class="bl">Cap generous</div>
+      <div class="bar">
+        <div class="seg think" style="flex:0 0 26%">thinking</div>
+        <div class="seg say" style="flex:0 0 21%">answer</div>
+        <div class="seg spare" style="flex:0 0 53%">unused — costs nothing</div>
+      </div>
+      <div class="bl"></div>
+      <div class="verdict neu"><b>Identical output.</b>
+        Raising the ceiling does not make answers longer, and does not cost more.</div>
+    </div>
+  </div>
+
+  <div class="panel struck">
+    <h2><span class="pill" style="background:#d03b3b1f;color:var(--danger)">Not available</span>
+        <span class="name">Temperature</span></h2>
+    <div class="grid2">
+      <p>No GPT-5 model accepts <code>temperature</code>, <code>top_p</code> or
+         <code>verbosity</code> — they are not among the parameters the provider lists, and
+         sending one is rejected outright.</p>
+      <p>So the variety of the wording cannot be turned up or down. Reasoning effort replaces it
+         as the quality dial, but it is not the same thing: it changes how hard the model thinks,
+         not how adventurous it is.</p>
+    </div>
+  </div>
+</div>

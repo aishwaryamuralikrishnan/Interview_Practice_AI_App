@@ -1,0 +1,188 @@
+<style>
+  :root{--ink:#0b0b0b;--muted:#52514e;--faint:#898781;--surface:#fff;
+        --page:#f7f7f4;--rule:#e1e0d9;--blue:#2a78d6;--orange:#eb6834;
+        --aqua:#1baf7a;--good:#0ca30c;--warn:#fab219;--danger:#d03b3b;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--page);
+       font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);}
+  .sheet{width:1180px;padding:34px 38px 30px;}
+  h1{font-size:1.45rem;margin:0 0 4px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);margin:0 0 24px;font-size:.94rem;max-width:84ch;}
+  .lane{font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+        color:var(--faint);font-weight:800;margin:0 0 9px;}
+
+  .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .cat{background:var(--surface);border:1px solid var(--rule);border-radius:13px;
+       padding:15px 17px 16px;}
+  .cat h2{font-size:.95rem;margin:0 0 3px;display:flex;align-items:center;gap:8px;}
+  .dot{width:9px;height:9px;border-radius:50%;}
+  .cat .cnt{font-size:.75rem;color:var(--faint);margin-bottom:11px;}
+  .crit{margin-bottom:9px;font-size:.79rem;line-height:1.45;}
+  .crit .k{font-weight:700;font-size:.82rem;color:var(--ink);}
+  .crit .k::after{content:" — ";font-weight:400;color:var(--faint);}
+  .crit .v{color:var(--muted);}
+  .cat .foot{margin-top:11px;padding-top:9px;border-top:1px solid var(--rule);
+       font-size:.76rem;color:var(--muted);}
+
+  .report{margin-top:24px;background:var(--surface);border:1px solid var(--rule);
+          border-radius:13px;padding:17px 19px 19px;}
+  .report h3{font-size:1rem;margin:0 0 12px;}
+  .top{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:center;
+       margin-bottom:15px;}
+  .hero{border:1px solid #fab21959;background:#fab2191a;border-radius:11px;
+        padding:11px 14px;}
+  .hero .lab{font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;
+        color:var(--faint);font-weight:800;}
+  .hero .big{font-size:2rem;font-weight:800;color:#a06f00;line-height:1.15;}
+  .hero .big span{font-size:.9rem;color:var(--muted);font-weight:600;}
+  .hero .band{font-size:.79rem;font-weight:700;color:#a06f00;}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .cols .h{font-size:.8rem;font-weight:700;margin-bottom:3px;}
+  .cols ul{margin:0;padding-left:16px;font-size:.79rem;color:var(--muted);line-height:1.45;}
+
+  .charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:15px;}
+  .chartbox{border:1px solid var(--rule);border-radius:10px;padding:10px 12px;
+        background:var(--page);}
+  .chartbox .t{font-size:.78rem;font-weight:700;margin-bottom:8px;}
+  .chartbox .d{font-size:.75rem;color:var(--muted);line-height:1.4;margin-top:7px;}
+  .mini{display:flex;align-items:flex-end;gap:6px;height:52px;}
+  .mini i{flex:1;border-radius:3px 3px 0 0;display:block;}
+
+  .answer{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;
+          background:var(--page);}
+  .answer .t{font-size:.78rem;font-weight:700;margin-bottom:9px;}
+  .step{display:flex;gap:9px;font-size:.8rem;margin-bottom:7px;line-height:1.4;}
+  .step .num{flex:0 0 auto;font-weight:800;color:var(--blue);}
+  .step .lbl{font-weight:700;}
+  .step .dsc{color:var(--muted);}
+  .strip{display:flex;gap:2px;margin:4px 0 8px 22px;flex-wrap:wrap;}
+  .cell{border:1px solid var(--rule);background:#fff;border-radius:6px;
+        padding:5px 9px;min-width:74px;}
+  .cell .cl{font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;
+        color:var(--faint);font-weight:800;white-space:nowrap;}
+  .cell .cv{font-size:.86rem;font-weight:800;}
+  .cell.ov{background:#f5f5f2;}
+  .cell.wide{flex:1;min-width:210px;}
+  .cell.wide .cv{font-size:.76rem;font-weight:500;color:var(--muted);line-height:1.35;}
+</style>
+
+<div class="sheet">
+  <h1>How answers are scored, and what you get back</h1>
+  <p class="sub">Every answer is marked out of 10 on the four criteria for its question type — a
+    self-introduction is not judged by the same yardstick as a debugging question. Scoring happens
+    once, after the last answer, so nothing you learn mid-interview can change it.</p>
+
+  <p class="lane">The rubric — four criteria per question type</p>
+  <div class="row3">
+    <div class="cat">
+      <h2><span class="dot" style="background:var(--blue)"></span>Self-introduction</h2>
+      <div class="cnt">1 question, always first</div>
+      <div class="crit"><span class="k">Clarity</span><span class="v">Easy to follow, no rambling
+        or unexplained jargon.</span></div>
+      <div class="crit"><span class="k">Skills Match</span><span class="v">The skills named are
+        the ones this posting asks for.</span></div>
+      <div class="crit"><span class="k">Experience Relevance</span><span class="v">The experience
+        fits this role's seniority and domain.</span></div>
+      <div class="crit"><span class="k">Background Fit</span><span class="v">The trajectory lines
+        up with what the employer is hiring for.</span></div>
+      <div class="foot">Asks: does this person sound like the person in the posting?</div>
+    </div>
+
+    <div class="cat">
+      <h2><span class="dot" style="background:var(--orange)"></span>Technical</h2>
+      <div class="cnt">Half the remainder, rounded up</div>
+      <div class="crit"><span class="k">Context</span><span class="v">Answers the question that
+        was actually asked, at the right depth.</span></div>
+      <div class="crit"><span class="k">Technical Knowledge</span><span class="v">Correct, deep
+        enough, no hand-waving or invented facts.</span></div>
+      <div class="crit"><span class="k">Structure</span><span class="v">A claim, a build, a
+        conclusion — not a stream of thought.</span></div>
+      <div class="crit"><span class="k">Language</span><span class="v">Precise, professional,
+        correct terminology.</span></div>
+      <div class="foot">Asks: do they know it, and can they explain it?</div>
+    </div>
+
+    <div class="cat">
+      <h2><span class="dot" style="background:var(--aqua)"></span>Behavioural</h2>
+      <div class="cnt">The other half, rounded down</div>
+      <div class="crit"><span class="k">Situation</span><span class="v">Where, when, who, and
+        what was at stake.</span></div>
+      <div class="crit"><span class="k">Task</span><span class="v">Their own responsibility and
+        the goal, stated clearly.</span></div>
+      <div class="crit"><span class="k">Action</span><span class="v">What <i>they</i> did — not
+        what "we" did.</span></div>
+      <div class="crit"><span class="k">Result</span><span class="v">A concrete outcome, ideally
+        a number, plus what was learned.</span></div>
+      <div class="foot">The STAR framework, scored one letter at a time.</div>
+    </div>
+  </div>
+
+  <div class="report">
+    <h3>What the report shows</h3>
+
+    <div class="top">
+      <div class="hero">
+        <div class="lab">Overall score</div>
+        <div class="big">7.3<span> / 10</span></div>
+        <div class="band">Adequate · Getting there</div>
+      </div>
+      <div class="cols">
+        <div><div class="h">What worked</div>
+          <ul><li>Up to four one-sentence patterns that repeated across answers.</li></ul></div>
+        <div><div class="h">Suggested improvements</div>
+          <ul><li>Up to four one-sentence changes, highest leverage first.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chartbox">
+        <div class="t">Score per question</div>
+        <div class="mini">
+          <i style="height:62%;background:var(--blue)"></i>
+          <i style="height:80%;background:var(--orange)"></i>
+          <i style="height:44%;background:var(--orange)"></i>
+          <i style="height:75%;background:var(--orange)"></i>
+          <i style="height:70%;background:var(--aqua)"></i>
+          <i style="height:35%;background:var(--aqua)"></i>
+        </div>
+        <div class="d">One bar per answer, coloured by question type — shows where the interview
+          went wrong, not just the average.</div>
+      </div>
+      <div class="chartbox">
+        <div class="t">Average by criterion</div>
+        <svg width="150" height="52" viewBox="0 0 150 62">
+          <g transform="translate(75,31)">
+            <circle r="27" fill="none" stroke="#e1e0d9"/><circle r="18" fill="none" stroke="#e1e0d9"/>
+            <circle r="9" fill="none" stroke="#e1e0d9"/>
+            <polygon points="24,0 0,-14 -20,0 0,22" fill="#eb683433" stroke="#eb6834"
+                     stroke-width="1.8"/>
+          </g>
+        </svg>
+        <div class="d">One radar per question type — shows <i>which</i> of the four criteria is
+          dragging the score down.</div>
+      </div>
+    </div>
+
+    <div class="answer">
+      <div class="t">Then, for every single answer</div>
+      <div class="step"><span class="num">1</span><span><span class="lbl">Question</span>
+        <span class="dsc">— exactly as it was asked.</span></span></div>
+      <div class="step"><span class="num">2</span><span><span class="lbl">Provided answer</span>
+        <span class="dsc">— exactly as you gave it.</span></span></div>
+      <div class="step"><span class="num">3</span><span><span class="lbl">Scores</span>
+        <span class="dsc">— overall, each criterion, and the one change worth making.</span></span></div>
+      <div class="strip">
+        <div class="cell ov"><div class="cl">Overall</div><div class="cv" style="color:#a06f00">6.5 / 10</div></div>
+        <div class="cell"><div class="cl">Context</div><div class="cv">7 / 10</div></div>
+        <div class="cell"><div class="cl">Tech. knowledge</div><div class="cv">5 / 10</div></div>
+        <div class="cell"><div class="cl">Structure</div><div class="cv">8 / 10</div></div>
+        <div class="cell"><div class="cl">Language</div><div class="cv">6 / 10</div></div>
+        <div class="cell wide"><div class="cl">Suggested improvement</div>
+          <div class="cv">Name the tool you used and the size of the dataset.</div></div>
+      </div>
+      <div class="step"><span class="num">4</span><span><span class="lbl">Stronger version of the
+        answer</span> <span class="dsc">— at most three sentences, in your own facts, with
+        [placeholders] where you never supplied a specific.</span></span></div>
+    </div>
+  </div>
+</div>
